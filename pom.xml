@@ -6,6 +6,9 @@
 	<artifactId>SpringBootDataSourceExample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<!-- packaging to WAR -->
+	<packaging>war</packaging>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -36,7 +39,15 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
+		<!-- to export as WAR -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
+
 
 
 	<properties>

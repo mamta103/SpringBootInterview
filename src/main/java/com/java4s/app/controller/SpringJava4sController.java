@@ -15,9 +15,14 @@ public class SpringJava4sController {
 	@Autowired
 	private SpringJava4sDAO dao;
 	
-	@RequestMapping("/getcustInfo")
+	/*@RequestMapping("/getcustInfo")
 	public List<Customer> customerInformation(){
 		List<Customer> customers= dao.isData();
 		return customers;
-	}
+	}*/
+	@RequestMapping("/java4s-spring-boot-ex-tomcat")
+	 public String customerInformation() {
+	      return "Hey, I am from external tomcat";
+	 }
+	
 }
