@@ -10,6 +10,8 @@ public class SpringBootApp {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootApp.class, args);
+		System.out.println("Dev tool Module");
+		System.out.println("Updated SpringBoot Code...:)");
 	}
 
 }
