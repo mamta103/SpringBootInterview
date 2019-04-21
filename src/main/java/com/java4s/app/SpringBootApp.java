@@ -5,13 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages="com.java4s.controller")
 public class SpringBootApp {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootApp.class, args);
-		System.out.println("Dev tool Module");
-		System.out.println("Updated SpringBoot Code...:)");
+		
 	}
 
 }
