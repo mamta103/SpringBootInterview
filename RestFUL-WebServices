@@ -1,0 +1,26 @@
+1.What is Web Services, Web Services Introduction?
+Answwer:: A service which available on WEB.with web service we can get different application on different platform, means java application in window platform can easily communicate with the application developed using .net/PHP in linux OS.
+
+RESTful::
+what ever data/response we will get from server is known as "RESOURCE".
+REST guidelines always talks about stateless communication between client and the Server.
+Stateless means, every single request from client to server will be considered as a fresh request. 
+Because of this reason REST always prefers to choose HTTP as it a stateless protocol.
+RESTful use 4 most widely use method.
+1.POST::CREATE/INSERT DATA
+2.PUT::UPDATE DATA
+3.GET::RETRIEVE DATA
+4.DELETE::Delete Data
+
+2.RESTful Web Services (JAX-RS) Annotations
+1.@Path('path')
+2.@Get
+3.@Post
+4.@Put()
+5.@Delete
+6.@Produces(MediaType.TEXT_PLAIN [, more-types])
+7.@Consumes(type[, more-types])
+8.@PathParam()
+9.@QueryParam()
+10.@MatrixParam()
+11.@FormParam()
