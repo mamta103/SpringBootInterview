@@ -11,3 +11,17 @@ both above belongs to functional testing.System Integration Testing (SIT) ensure
 3.AD Environment:: Active Directy
 
 4.A GAP:: GAP analysis is a method of assessing the differences in performance between a business' information systems or software applications to determine whether business requirements are being met and, if not, what steps should be taken to ensure they are met successfully.
+
+Gap refers to the space between "where we are" (the present state) and "where we want to be" (the target state). A gap analysis may also be referred to as a needs analysis, needs assessment or need-gap analysis. 
+
+5.SSO is a solution that allows one sign on, obviously. For example, I've had (many years)of experience using ClearTrust in conjunction with RSA Secur-Id as a very secure SSO solution.
+
+Single sign-on (SSO) is a session and user authentication service that permits a user to use one set of login credentials (e.g., name and password) to access multiple applications. ... On the back end, SSO is helpful for logging user activities as well as monitoring user accounts
+
+ClearTrust (now called RSA Access Manager) is a SSO solution that works very well with web apps, since it's a web-based solution, and it supports multiple types of authentication (AD, userid/password, SecurId, certificates) and also works with about any OS or web server you can think of.
+
+6.Active Directory Federation Services (ADFS) is a Single Sign-On (SSO) solution created by Microsoft. As a component of Windows Server operating systems, it provides users with authenticated access to applications that are not capable of using Integrated Windows Authentication (IWA) through Active Directory (AD).
+
+7.GTI:: Industry Standard
+
+8.What is the Big Difference Between SAML and OAuth? ... SAML (Security Assertion Markup Language) is an umbrella standard that encompasses profiles, bindings and constructs to achieve Single Sign On (SSO), Federation and Identity Management. OAuth (Open Authorization) is a standard for authorization of resources.
