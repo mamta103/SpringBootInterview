@@ -1,1 +1,13 @@
 
+1.@Configuration::
+
+
+2.What is the difference between SIT and UAT?
+
+SIT->System Intregration Testing
+UAT->USer Acceptence Testing
+both above belongs to functional testing.System Integration Testing (SIT) ensures that individual modules, product set-ups, batch operations, basic reporting functionalities and key interfaces of an application-under-test (AUT) work well.
+
+3.AD Environment:: Active Directy
+
+4.A GAP:: GAP analysis is a method of assessing the differences in performance between a business' information systems or software applications to determine whether business requirements are being met and, if not, what steps should be taken to ensure they are met successfully.
