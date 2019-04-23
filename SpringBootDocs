@@ -55,3 +55,11 @@ This scope is similar to provided except that you have to provide the JAR which 
 import (only available in Maven 2.0.9 or later)
 
 This scope is only used on a dependency of type pom in the section. It indicates that the specified POM should be replaced with the dependencies in that POM's section. Since they are replaced, dependencies with a scope of import do not actually participate in limiting the transitivity of a dependency.
+
+10.SAML SSO works by transferring the user's identity from one place (the identity provider) to another (the service provider). This is done through an exchange of digitally signed XML documents. Consider the following scenario: A user is logged into a system that acts as an identity provider.
+
+
+
+
+
+
