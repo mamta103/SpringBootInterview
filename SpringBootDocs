@@ -21,6 +21,12 @@ Single sign-on (SSO) is a session and user authentication service that permits a
 ClearTrust (now called RSA Access Manager) is a SSO solution that works very well with web apps, since it's a web-based solution, and it supports multiple types of authentication (AD, userid/password, SecurId, certificates) and also works with about any OS or web server you can think of.
 
 6.Active Directory Federation Services (ADFS) is a Single Sign-On (SSO) solution created by Microsoft. As a component of Windows Server operating systems, it provides users with authenticated access to applications that are not capable of using Integrated Windows Authentication (IWA) through Active Directory (AD).
+Active Directory Federation Services (ADFS) is a standards-based web Single Sign-On federated identity which implements claims based authentication across forests.ADFS provides authentication services for applications over standard protocols. We typically refer to these apps as claims based applications. Claims based authentication is the process of authenticating a user based on a set of claims about its identity contained in a trusted token. Such a token is often issued and signed by an entity that is able to authenticate the user by other means, and that is trusted by the entity doing the claims based authentication. Claims are essentially attributes derived from Active Directory, a LDAP or SQL server.
+
+In ADFS, identity federation is established between two organizations by establishing trust between two security realms. A federation server on one side (the Accounts side) authenticates the user through the standard means in Active Directory Domain Services and then issues a token containing a series of claims about the user, including its identity.
+
+On the other side, the Resources side, another federation server validates the token and issues another token for the local servers to accept the claimed identity. This allows a system to provide controlled access to its resources or services to a user that belongs to another security realm without requiring the user to authenticate directly to the system and without the two systems sharing a database of user identities or passwords.
+
 
 7.GTI:: Industry Standard
 
@@ -89,6 +95,7 @@ You then import this metadata file into ADFS as a SAML SP.
 You then configure claims rules for the AD attributes you want to send to your SP.
 
 That's basically it!
+
 
 
 
