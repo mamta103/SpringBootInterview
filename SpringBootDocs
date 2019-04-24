@@ -57,6 +57,39 @@ import (only available in Maven 2.0.9 or later)
 This scope is only used on a dependency of type pom in the section. It indicates that the specified POM should be replaced with the dependencies in that POM's section. Since they are replaced, dependencies with a scope of import do not actually participate in limiting the transitivity of a dependency.
 
 10.SAML SSO works by transferring the user's identity from one place (the identity provider) to another (the service provider). This is done through an exchange of digitally signed XML documents. Consider the following scenario: A user is logged into a system that acts as an identity provider.
+Security Assertion Markup Language 2.0 (SAML 2.0) is a standard providing means to exchange authentication and authorization data between security domains. It is typically used to achieve cross-domain single sign-on (SSO) and creation of security tokens.
+
+Security Assertion Markup Language (saml) is an xml-based open standard for exchanging authentication and authorization data between security domains, that is, between an identity provider (a producer of assertions) and a service provider (a consumer of assertions). saml is a product of the oasis Security Services Technical Committee.
+SAML version 2 (saml-2.0) adds digital signatures and resolves back into the SAML standard enhancements made to the SAML 1.1 (saml-1.1) specification by other systems (for instance Shibboleth and WS-federation).
+
+SAML 2.0 is significantly different from SAML 1.1 and is not backwards compatible, although many systems can handle both.
+
+
+11.Implementing ADFS in application how to?
+My personal situation is that the application (SP) is hosted on AWS (hosting only) and the IDP is a third party organisation which implements Active Directory. I think I have the theory worked out, like:
+
+-the browser tries to access the SP
+-the SP sends an authentication request to the IDP
+-the IDP authenticates the user (the user physically signs in)
+-an authentication authorization token is sent from the IDP to the SP 
+-the user can use the application
+
+You don't implement ADFS in the application. ADFS is a separate IDP.
+
+What language is your SP written in?
+
+"IDP is a third party organisation which implements Active Directory" Is this the ADFS instance or something else? In which case, where does ADFS fit in?
+
+What you need is a SAML stack on the SP (this is where where Spring Security comes in).
+
+Spring Security provides federation metadata. This describes SAML endpoints, certificates etc.
+
+You then import this metadata file into ADFS as a SAML SP.
+
+You then configure claims rules for the AD attributes you want to send to your SP.
+
+That's basically it!
+
 
 
 
