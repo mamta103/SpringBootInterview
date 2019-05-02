@@ -111,6 +111,54 @@ That's basically it!
 7.MediaType : With @RequestMapping annotation, you can additionally, specify the MediaType to be produced or consumed (using produces or consumes attributes) by that particular controller method, to further narrow down the mapping.
 
 
+8.Spring’s RestTemplate comes to Rescue. RestTemplate provides higher level methods that correspond to each of the six main HTTP methods that make invoking many RESTful services a one-liner and enforce REST best practices.
+
+HTTP Methods and corresponding RestTemplate methods:
+
+HTTP GET : getForObject, getForEntity
+HTTP PUT : put(String url, Object request, String…​urlVariables)
+HTTP DELETE : delete
+HTTP POST : postForLocation(String url, Object request, String…​ urlVariables), postForObject(String url, Object request, Class responseType, String…​ uriVariables)
+HTTP HEAD : headForHeaders(String url, String…​ urlVariables)
+HTTP OPTIONS : optionsForAllow(String url, String…​ urlVariables)
+HTTP PATCH and others : exchange execute
+
+9.How to suppress unchecked warnings – Java
+The ‘unchecked warnings’ is quite popular warning message in Java. However, if you insist this is an invalid warning, and there are no ways to solve it without compromising the existing program functionality. You may just use @SuppressWarnings(“unchecked”) to suppress unchecked warnings in Java.
+
+1. In Class
+If applied to class level, all the methods and members in this class will ignore the unchecked warnings message.
+
+@SuppressWarnings("unchecked")
+public class classA{...}
+
+
+2. In Method
+If applied to method level, only this method will ignore the unchecked warnings message.
+@SuppressWarnings("unchecked")
+private void method1(){...}
+
+
+3.3. In Property
+If applied to property level, only this property will ignore the unchecked warnings message.
+@SuppressWarnings("unchecked")
+private List list1;
+
+
+10.Spring @Component, @Service, @Repository, @Controller Difference
+Spring @Component, @Service, @Repository and @Controller annotations are used for automatic bean detection using classpath scan in Spring framework. 
+
+ @Component is a generic annotation. 
+ Difference of @Service, @Repository, @Controller with @Component is they are special cases of @Component and used for particular purposes. 
+
+Spring automatically scans and identifies all these classes that are annotated with “ @Component, @Service, @Repository, @Controller”  and registers BeanDefinition with ApplicationContext.
+
+@Component – generic and can be used across application.
+@Service – annotate classes at service layer level.
+@Controller – annotate classes at presentation layers level, mainly used in Spring MVC.
+@Repository – annotate classes at persistence layer, which will act as database repository.
+
+
 
 
 
