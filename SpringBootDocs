@@ -159,6 +159,30 @@ Spring automatically scans and identifies all these classes that are annotated w
 @Repository – annotate classes at persistence layer, which will act as database repository.
 
 
+Cookies::
+we dont want to save in cookies then havwe to change our browser setup.
+
+
+JPM::GOALS
+1. Learn more on Clear Trust SSO from Oracle
+2. Learn ADFS
+3. Go through the TO .. learn the open items
+
+4.AS Is .. understand the current application
+Batch scripts - updates
+Batch jobs - to send info that you need to update the password
+
+5.Different patterns in authentication and authorization
+6.no impact to database
+
+7.current application we are not chanign anything on DB layer, no change to functionality.
+8.only change is the change to AD
+9.workflow and flow diagrams need to be documented and get an alignment from busines
+10.proposal solution document
+11.come up with all different patterns and scenarios
+12.LDAP authentication
+13.how it is configured .. then how the orgnization designed for the application
+
 
 
 
