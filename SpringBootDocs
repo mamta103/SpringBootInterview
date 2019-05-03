@@ -168,6 +168,8 @@ JPM::GOALS
 2. Learn ADFS
 3. Go through the TO .. learn the open items
 
+
+
 4.AS Is .. understand the current application
 Batch scripts - updates
 Batch jobs - to send info that you need to update the password
@@ -182,6 +184,135 @@ Batch jobs - to send info that you need to update the password
 11.come up with all different patterns and scenarios
 12.LDAP authentication
 13.how it is configured .. then how the orgnization designed for the application
+14::RSA Access::
+
+3rd May 2019
+LDAP::
+ Overview. In this quick tutorial, we will learn how to set up Spring Security LDAP. Before we start, a note about what LDAP is – it stands for Lightweight Directory Access Protocol and it's an open, vendor-neutral protocol for accessing directory services over a network
+ LDAp uses 2 impotant ::
+ 1.OpenLDAP
+ 2.Active Directory
+ 
+ 
+ Trigeer::
+ If we apply one operation in one table result will be reflet to another table called Trigger.
+ Trigger takes two kinda of table which is virtual 1.Insert Trigger 2.Instead of DELETE.
+ 
+ Note:: for insert and update in both situation only insert happens .
+ 
+ What is a Trigger :
+A trigger is a special kind of a store procedure that executes in response to certain action on the table like insertion, deletion or updation of data. It is a database object which is bound to a table and is executed automatically. 
+
+Types Of Triggers
+1. After Triggers (For Triggers) : After Insert, After Update, After Delete
+2. Instead Of Triggers
+
+CREATE TABLE tblemployee(Emp_ID INT Identity,Emp_name Varchar(100),Emp_Sal Decimal (10,2))
+
+INSERT INTO tblemployee VALUES ('Anand',15000);
+INSERT INTO tblemployee VALUES ('Neha',12400);
+INSERT INTO tblemployee VALUES ('Sohan',11500);
+INSERT INTO tblemployee  VALUES ('Vijay',15500);
+INSERT INTO tblemployee VALUES ('Sapna',14000);
+
+I will be creating an AFTER INSERT TRIGGER which will insert the rows inserted into the table into another log table. The main purpose of this log table is to record the changes in the main table.
+ Now, create the log table as:-
+CREATE TABLE Employee_Log
+(Emp_ID int,Emp_name varchar(100),Emp_Sal decimal (10,2),Log_Action varchar(100),log_Timestamp datetime)
+
+(a) After Insert Trigger
+This trigger is fired after an INSERT on the table. Let’s create the trigger as:
+CREATE TRIGGER trgAfterInsert ON tblemployee 
+After  INSERT
+AS
+ declare @empid int
+ declare @empname varchar(100)
+ declare @empsal decimal(10,2)
+ declare @log_action varchar(100)
+
+ select @empid=i.Emp_ID, @empname=i.Emp_Name, @empsal=i.Emp_Sal from inserted i; 
+ set @log_action='Inserted Record -- After Insert Trigger.';
+
+ insert into Employee_log
+           (Emp_ID,Emp_Name,Emp_Sal,Log_Action,Log_Timestamp) 
+ values(@empid,@empname,@empsal,@log_action,getdate());
+
+ PRINT 'AFTER INSERT trigger fired.'
+GO
+
+The CREATE TRIGGER statement is used to create the trigger. THE ON clause specifies the table name on which the trigger is to be attached. The after INSERT specifies that this is an AFTER 
+INSERT trigger. In the trigger body, table named inserted has been used. This table is a logical table and contains the row that has been inserted. I have selected the fields from the logical inserted table from the row that has been inserted into different variables, and finally inserted those values into the log table.
+To see the newly created trigger in action, lets insert a row into the main table as:
+insert into tblemployee values('Ram',10500);
+Now, a record has been inserted into the tblemployee table. The AFTER INSERT trigger attached tothis table has inserted the record into the Employee_Log as:
+6   Ram  10500.00   Inserted Record -- After Insert Trigger. 2016-10-10 08:28:00.500
+
+(b) AFTER UPDATE Trigger
+This trigger is fired after an update on the table. Let’s create the trigger as:
+CREATE TRIGGER trgAfterUpdate ON tblemployee
+After UPDATE
+AS
+ declare @empid int;
+ declare @empname varchar(100);
+ declare @empsal decimal(10,2);
+ declare @log_action varchar(100);
+
+ select @empid=i.Emp_ID, select @empname=i.Emp_Name, select @empsal=i.Emp_Sal from inserted i; 
+ 
+ if update(Emp_Name)
+  set @alog_action='Updated Record -- After Update Trigger.';
+ if update(Emp_Sal)
+  set @log_action='Updated Record -- After Update Trigger.';
+
+ insert into Employee_Log(Emp_ID,Emp_Name,Emp_Sal,Log_Action,Log_Timestamp) 
+ values(@empid,@empname,@empsal,@log_action,getdate());
+
+ PRINT 'AFTER UPDATE Trigger fired.'
+GO
+The AFTER UPDATE Trigger is created in which the updated record is inserted into the log table. 
+There is no logical table updated like the logical table inserted. We can obtain the updated value of a field from theupdate(column_name) function. In our trigger, we have used, if update(Emp_Name) to check if the column Emp_Name has been updated. We have similarly 
+checked the column Emp_Sal for an update.
+Let’s update a record column and see what happens.
+update tblemployee set Emp_Sal=15000 where Emp_ID=6
+This inserts the row into the audit table as:
+6  Ram  15000.00  Updated Record -- After Update Trigger.   2016-10-10 08:28:00.500
+
+(c) AFTER DELETE Trigger
+This trigger is fired after a delete on the table. Let’s create the trigger as:
+CREATE TRIGGER trgAfterDelete ON tblemployee 
+AFTER DELETE
+AS
+ declare @empid int;
+ declare @empname varchar(100);
+ declare @empsal decimal(10,2);
+ declare @log_action varchar(100);
+
+ select @empid=d.Emp_ID, @empname=d.Emp_Name, select @empsal=d.Emp_Sal from deleted d;  
+ set @log_action='Deleted -- After Delete Trigger.';
+
+ insert into Employee_log
+(Emp_ID,Emp_Name,Emp_Sal,Log_Action,Log_Timestamp) 
+ values(@empid,@empname,@empsal,@Log_action,getdate());
+
+ PRINT 'AFTER DELETE TRIGGER fired.'
+GO
+In this trigger, the deleted record’s data is picked from the logical deleted table and inserted into the Log table. Let’s fire a delete on the main table. A record has been inserted into the audit table as:
+6  Ram   15000.00  Deleted -- After Delete Trigger.  2016-10-10 08:28:00.500
+ 
+ #####What is the difference between a wait() and sleep() in Threads?
+ 1.A wait() cann be woken by some another thread calling notify where as
+ Seeep can't be woken by some other thread.
+
+
+2.wait and notify should be in synchronized  block but sleep does not.
+
+Object mon = ...;
+synchronized (mon) {
+    mon.wait();
+} 
+
+
+ 
 
 
 
