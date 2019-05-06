@@ -165,6 +165,24 @@ we dont want to save in cookies then havwe to change our browser setup.
 
 JPM::GOALS
 1. Learn more on Clear Trust SSO from Oracle
+links::Clear Trust SSO from Oracle Spring boot->https://shekhargulati.com/2018/02/15/single-sign-on-in-spring-boot-applications-with-spring-security-oauth/
+note::no sso token exist in cookie then redirect to sso server.
+@EnableAuthorizationServer:: This annotation imports two configuration classes — 
+1.AuthorizationServerEndPointsConfiguration->
+The AuthorizationServerEndpointsConfiguration configuration class create beans for three REST controllers — AuthorizationEndpoint, TokenEndpoint, and CheckTokenEndpoint. These three controllers provide implementations for endpoints specified in OAuth2 specification.
+
+
+2.AuthorizationServerSequrityConfiguration->
+The AuthorizationServerSecurityConfiguration configuration class configures Spring Security for OAuth endpoints.
+
+
+
+
+
+
+
+
+
 2. Learn ADFS
 3. Go through the TO .. learn the open items
 
@@ -313,6 +331,10 @@ synchronized (mon) {
 
 
 CORS(Cross Orgin Resourse sharing Resourse )::
+
+6th May 2019
+password fatigue:पासवर्ड थकान
+
 
  
 
