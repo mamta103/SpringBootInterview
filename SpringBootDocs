@@ -28,6 +28,53 @@ In ADFS, identity federation is established between two organizations by establi
 On the other side, the Resources side, another federation server validates the token and issues another token for the local servers to accept the claimed identity. This allows a system to provide controlled access to its resources or services to a user that belongs to another security realm without requiring the user to authenticate directly to the system and without the two systems sharing a database of user identities or passwords.
 
 
+Note->
+For a non-Microsoft person, what is ADFS?
+
+ADFS is Microsoft's solution for Single Sign On and web based authentication.
+
+It is used primarily to provide a single set of credentials that can access a variety of sites not necessarily hosted within the same domain.
+
+how ADFS differ from LDAP?
+LDAP:
+1.commmunicates using TCP/UDP on port 389(or port 636 for LDAP.
+2.LDAP contains commands for searching/retrieve/adding/deleting/updating users profile and other directory entries.
+3.LDAP cannot perform directly by a web browser ,however HTTP authenication can be translate LDAP by usng using things like Apache's mod_authnz_ldap.
+4.When used for third-party website authentication, requires that username & password are provided to the third-party, which is not ideal for security.
+5.Is more of an open standard and has numerous Linux implementations.
+
+ADFS->
+1.Better designed for the web as it communicates over standard HTTPS
+2.Follows a safer process similar (but not exact) to OAuth where the original username/password are provided directly to the organisation's ADFS server (or a proxy, but not the third-party), which if valid, returns a unique token that can be used to access a third-party website.
+3.Although it does use make use of some open standards (HTTPS, SAML etc.) it is Microsoft-specific and requires Internet Information Services (IIS) which only runs on Windows Servers.
+
+How does it work? What kind of information would be included in a typical request to an ADFS server? Is it designed for both authentication and authorization?
+
+It works by having a single site (site A) that hosts the ADFS / ADFS proxy servers, which has access to the credentials (usually by communicating with an Active Directory Domain Controller). It is then given a trust between other sites (sites B & C) that require authenticating through the ADFS.
+
+When a user attempts to access site B in their browser, the site redirects the user to the ADFS-proxy website (site A) which asks for their username & password, authenticates them, returns a set of cookies for remembering them, and redirects them back to the site B, along with an access token.
+
+If the user then attempts to visit site C, they will also get redirected to site A for authentication from the ADFS-proxy website. If the right cookies exist, the user will not be required to enter their password again, but get instantly redirected back to site C with a token.
+
+The ADFS can be configured with specific claims (or permissions) for the user, for authorization purposes. So it can serve both roles. (Note the difference between authentication and authorization.)
+
+Some people prefer not to use it for authorization but instead keep the permissions management in the third-party website. The obvious downside is that both site A & B need to keep track of user accounts, while in the scenario where ADFS handles both, only the ADFS needs to be aware of the users.
+
+Are ADFS 
+Are ADFS servers typically accessible from the internet (whereas corporate AD domain controllers would not be)?
+
+Yes, nearly always. ADFS is based on the notion that it will be primarily used for website authentication. And is built around IIS.
+
+The ADFS-proxy site is the one that is usually accessible from the internet. However the ADFS itself is not. The ADFS is generally a separate server from the ADFS-proxy.
+
+ADFS Server
+Server that links to the credentials, and has the claims configuration as well as the trusts. Generally not publicly accessible.
+ADFS Proxy Server
+Server that hosts the IIS instance that has the login pages for the websites requiring authentication. Communicates back to the ADFS when requiring authentication. Generally publicly accessible.
+
+note very nicly they explore ADFS link->
+https://serverfault.com/questions/708669/what-is-adfs-active-directory-federation-services
+
 7.GTI:: Industry Standard
 
 8.What is the Big Difference Between SAML and OAuth? ... SAML (Security Assertion Markup Language) is an umbrella standard that encompasses profiles, bindings and constructs to achieve Single Sign On (SSO), Federation and Identity Management. OAuth (Open Authorization) is a standard for authorization of resources.
@@ -344,6 +391,14 @@ https://howtodoinjava.com/spring5/webmvc/spring-mvc-cors-configuration/
 
 Question3:: Single sign-on in Spring Boot applications with Spring Security OAuth->link
 https://shekhargulati.com/2018/02/15/single-sign-on-in-spring-boot-applications-with-spring-security-oauth/
+
+7th May 2019
+CORSCourse Orgin Resource Sharing-> 
+1.for cross domain need to enable enable origin.
+2.CORS is a extension.
+
+
+
 
 
 
