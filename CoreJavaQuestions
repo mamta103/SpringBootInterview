@@ -1,4 +1,5 @@
 1.How hashmap works in java?
+
 HashMap in Java works on hashing principle. It is a data structure which allows us to store object and retrieve it in constant time O(1) provided we know the key. In hashing, hash functions are used to link key and value in HashMap. Objects are stored by calling put(key, value) method of HashMap and retrieved by calling get(key) method. When we call put method, hashcode() method of the key object is called so that hash function of the map can find a bucket location to store value object, which is actually an index of the internal array, known as the table. HashMap internally stores mapping in the form of Map.Entry object which contains both key and value object. When you want to retrieve the object, you call the get() method and again pass the key object. This time again key object generate same hash code (it's mandatory for it to do so to retrieve the object and that's why HashMap keys are immutable e.g. String) and we end up at same bucket location. If there is only one object then it is returned and that's your value object which you have stored earlier. Things get little tricky when collisions occur. It's easy to answer this question if you have read good book or course on data structure and algorithms like this one. If you know how hash table data structure works then this is a piece of cake.
 
 Since the internal array of HashMap is of fixed size, and if you keep storing objects, at some point of time hash function will return same bucket location for two different keys, this is called collision in HashMap. In this case, a linked list is formed at that bucket location and a new entry is stored as next node.
@@ -13,3 +14,6 @@ How HashMap works in Java or sometimes how does get method work in HashMap is a 
 
 It has become very popular Java interview question in almost any senior or mid-senior level Java interviews. Investment banks mostly prefer to ask this question and sometimes even ask you to implement your own HashMap based upon your coding aptitude. The introduction of ConcurrentHashMap and other concurrent collections has also made this questions as starting point to delve into a more advanced feature. let's start the journey
 
+2.What is Serialization? | Core Java Interview Questions | Mr.Srinivas
+answer->
+converting object state into persistence( state.
