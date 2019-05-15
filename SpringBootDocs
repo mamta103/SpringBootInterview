@@ -1,3 +1,9 @@
+15th May 2019
+Spring is all about Depedency injection which makes code lossely coupled.
+
+
+Spring MVC->spring mvc framework provided decoupled way of developing web applications. with simple concept like Dispatcher Servlet, ModelaAndView ,ViewResolver, View they makes easy to developed web application.
+
 
 1.@Configuration::
 
