@@ -1,0 +1,51 @@
+Question01.What is the difference between BETWEEN and IN operators in SQL?
+The BETWEEN operator is used to fetch rows based on a range of values.
+For example,
+SELECT * FROM Students 
+WHERE ROLL_NO BETWEEN 20 AND 30;
+This query will select all those rows from the table Students where the value of the field ROLL_NO lies between 20 and 30.
+
+IN
+The IN operator is used to check for values contained in specific sets.
+For example,
+
+SELECT * FROM Students 
+WHERE ROLL_NO IN (20,21,23);
+This query will select all those rows from the table Students where the value of the field ROLL_NO is either 20 or 21 or 23.
+
+
+Question2.Write an SQL query to find names of employee start with ‘A’?
+SELECT * FROM Employees WHERE EmpName like 'A%' ;
+
+
+Question3.What do you mean by data definition language?
+Data definition language or DDL allows to execute queries like CREATE, DROP and ALTER. That is, those queries which define the data.
+
+
+Question4.What do you mean by data manipulation language?
+Data manipulation Language or DML is used to access or manipulate data in the database.
+It allows us to perform below listed functions:
+Insert data or rows in database
+Delete data from database
+Retrieve or fetch data
+Update data in database.
+
+Question5.What is the difference between primary key and unique constraints?
+Primary key cannot have NULL value, the unique constraints can have NULL values. There is only one primary key in a table, but there can be multiple unique constrains. The primary key creates the cluster index automatically but the Unique key does not.
+
+Question6.What is a view in SQL?
+Views in SQL are kind of virtual tables. A view also has rows and columns as they are in a real table in the database. We can create a view by selecting fields from one or more tables present in the database. A View can either have all the rows of a table or specific rows based on certain condition.
+The CREATE VIEW statement of SQL is used for creating Views.
+Basic Syntax:
+CREATE VIEW view_name AS
+SELECT column1, column2.....
+FROM table_name
+WHERE condition;
+
+view_name: Name for the View
+table_name: Name of the table
+condition: Condition to select rows
+
+Q7.What do you mean by foreign key?
+A Foreign key is a field which can uniquely identify each row in another table. And this constraint is used to specify a field as Foreign key. That is, this field points to primary key of another table. This usually creates a kind of link between the two tables.
+C
